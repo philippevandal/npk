@@ -1,21 +1,21 @@
 <!doctype HTML>
 	<head>
 		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-		<script src="https://raw.githubusercontent.com/philippevandal/npk/main/js/restriction-component.js"></script>
-		<script src="https://raw.githubusercontent.com/philippevandal/npk/main/js/sound-component.js"></script>
+		<script src="/js/restriction-component.js"></script>
+		<script src="/js/sound-component.js"></script>
 	</head>
 	<body style='margin : 0px; overflow: hidden;'>
 		<a-scene shadow inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
 			<a-assets timeout="60000">
 				<!-- Models -->
-				<a-asset-item id="render-obj" src="https://raw.githubusercontent.com/philippevandal/npk/main/content/models/render2.obj"></a-asset-item>
-				<a-asset-item id="render-mtl" src="https://raw.githubusercontent.com/philippevandal/npk/main/content/models/render2.mtl"></a-asset-item>
-				<a-asset-item id="lifeguard-obj" src="https://raw.githubusercontent.com/philippevandal/npk/main/content/models/lifeguard.obj"></a-asset-item>
-				<a-asset-item id="lifeguard-mtl" src="https://raw.githubusercontent.com/philippevandal/npk/main/content/models/lifeguard.mtl"></a-asset-item>
+				<a-asset-item id="render-obj" src="./content/models/render2.obj"></a-asset-item>
+				<a-asset-item id="render-mtl" src="./content/models/render2.mtl"></a-asset-item>
+				<a-asset-item id="lifeguard-obj" src="./content/models/lifeguard.obj"></a-asset-item>
+				<a-asset-item id="lifeguard-mtl" src="./content/models/lifeguard.mtl"></a-asset-item>
 
 				<!-- Environment -->
-				<img id="sand" src="https://github.com/philippevandal/npk/blob/main/content/textures/sand.jpg">
-				<img id="sky" src="https://github.com/philippevandal/npk/blob/main/content/textures/sky.jpg"></img>
+				<img id="sand" src="./content/textures/sand.jpg">
+				<img id="sky" src="./content/textures/sky.jpg"></img>
 
 				<!-- Sounds -->
 				<audio id="beach" src="./content/sounds/beach.mp3" preload="auto"></audio>
