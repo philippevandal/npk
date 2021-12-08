@@ -1,8 +1,24 @@
 <!doctype HTML>
 	<head>
 		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-		<script src="/js/restriction-component.js"></script>
-		<script src="/js/sound-component.js"></script>
+    <script src="./js/restriction-component.js"></script>
+		<!-- <script src="./js/sound-component.js"></script> -->
+		<script>
+      let clicked = false;
+			//document.querySelector('a-scene').addEventListener('loaded', function () {
+			document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('click', () => {
+					if (!clicked) {
+            const sounds = document.querySelectorAll('.sounds');
+            sounds.forEach(function(soundEntity) {
+            soundEntity.components.sound.playSound();
+            });
+            clicked = true;
+            console.log("mouse Moved!");
+					}
+				});
+			})
+		</script>
 	</head>
 	<body style='margin : 0px; overflow: hidden;'>
 		<a-scene shadow inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
@@ -67,8 +83,8 @@
 				<a-entity camera="" look-controls="" wasd-controls="" position="-3.094151134026806 0 -9.574826966005839" rotation="7.677634454753034 -17.76169164905554 0" data-aframe-inspector-original-camera=""></a-entity> 
 			</a-entity> -->
 
-			<a-entity id="rig" position="3.97996 1.6 25.27225" rotation="">
-				<a-entity camera="" look-controls="" wasd-controls="" position="4.237630536127413 0 -12.948359834093477" rotation="8.021409131831522 32.88777744050923 0" data-aframe-inspector-original-camera=""></a-entity> 
+			<a-entity id="rig" position="3.97996 1.6 4"> // 
+				<a-entity id="camera" camera="" look-controls="" wasd-controls="" position="4.237630536127413 0 -12.948359834093477" rotation="8.021409131831522 32.88777744050923 0" data-aframe-inspector-original-camera=""></a-entity> 
 			<!-- id="camera" -->
 			</a-entity>
 
@@ -77,50 +93,49 @@
 			<a-entity light="color: #d6e9ff; intensity: 0.75; castShadow: true" position="19.24191 12.9318 -9.5782"></a-entity>
 			<a-sky src="#sky" color="#87ceeb" position="0 400 0"></a-sky>
 			<a-plane src="#sand" rotation="-90 0 0" width="50" height="50" shadow="cast: true; receive: true" restriction></a-plane>
-			<a-entity sound="src: #beach; autoplay: true; loop: true; volume: 1" position="0 0 -15"></a-entity>
+			<a-entity class="sounds" sound="src: #beach; loop: true; volume: 1" position="0 0 -15"></a-entity>
 			<a-entity obj-model="obj: #lifeguard-obj; mtl: #lifeguard-mtl" shadow="cast: true; receive: true" position= "0 0 6.571" scale="0.1 0.1 0.1" rotation="-90.00021045914971 90 0"></a-entity>
 
 			<!-- Structure -->
 			<a-entity obj-model="obj: #render-obj; mtl: #render-mtl" shadow="cast: true; receive: true"position="2.94645 0.00082 -1.40706" scale="0.1 0.1 0.1" rotation="-88.42801426931074 -159.173405065294 66.56967438506982"></a-entity>
-			<!-- <a-entity obj-model="obj: ./content/models/render2.obj; mtl: ./content/models/render2.mtl" shadow="" position="2.94645 0.00082 -1.40706" scale="0.1 0.1 0.1" rotation="-88.42801426931074 -159.173405065294 66.56967438506982"></a-entity> -->
 
 			<!-- Sound Objects -->
-			<a-entity sound="src: #sound0; volume: 0.08; autoplay: true; loop: true" position="2.396 4.051 4.228"></a-entity>
-			<a-entity sound="src: #sound1; volume: 0.08; autoplay: true; loop: true" position="0.8854 4.051 4.09757"></a-entity>
-			<a-entity sound="src: #sound2; volume: 0.08; autoplay: true; loop: true" position="2.282 4.096 3.943"></a-entity>
-			<a-entity sound="src: #sound3; volume: 0.08; autoplay: true; loop: true" position="1.08101 4.096 3.77898"></a-entity>
-			<a-entity sound="src: #sound4; volume: 0.08; autoplay: true; loop: true" position="2.31458 3.88854 3.68708"></a-entity>
-			<a-entity sound="src: #sound5; volume: 0.08; autoplay: true; loop: true" position="1.21794 4.01272 3.47562"></a-entity>
-			<a-entity sound="src: #sound6; volume: 0.08; autoplay: true; loop: true" position="2.282 3.65232 3.49393"></a-entity>
-			<a-entity sound="src: #sound7; volume: 0.08; autoplay: true; loop: true" position="1.21794 3.75081 3.36149"></a-entity>
-			<a-entity sound="src: #sound8; volume: 0.08; autoplay: true; loop: true" position="2.282 3.48176 3.33594"></a-entity>
-			<a-entity sound="src: #sound9; volume: 0.08; autoplay: true; loop: true" position="1.12023 3.52458 3.10233"></a-entity>
-			<a-entity sound="src: #sound10; volume: 0.08; autoplay: true; loop: true" position="2.282 3.42621 2.99471"></a-entity>
-			<a-entity sound="src: #sound11; volume: 0.08; autoplay: true; loop: true" position="0.96399 3.46104 2.78939"></a-entity>
-			<a-entity sound="src: #sound12; volume: 0.08; autoplay: true; loop: true" position="2.282 3.22526 2.71302"></a-entity>
-			<a-entity sound="src: #sound13; volume: 0.08; autoplay: true; loop: true" position="0.96399 3.2443 2.64086"></a-entity>
-			<a-entity sound="src: #sound14; volume: 0.08; autoplay: true; loop: true" position="2.282 3.13036 2.41451"></a-entity>
-			<a-entity sound="src: #sound15; volume: 0.08; autoplay: true; loop: true" position="0.96399 3.07644 2.42531"></a-entity>
-			<a-entity sound="src: #sound16; volume: 0.08; autoplay: true; loop: true" position="2.282 2.82988 2.37873"></a-entity>
-			<a-entity sound="src: #sound17; volume: 0.08; autoplay: true; loop: true" position="0.96399 2.80621 2.30457"></a-entity>
-			<a-entity sound="src: #sound18; volume: 0.08; autoplay: true; loop: true" position="2.282 2.66532 2.17464"></a-entity>
-			<a-entity sound="src: #sound19; volume: 0.08; autoplay: true; loop: true" position="0.96399 2.5741 2.12945"></a-entity>
-			<a-entity sound="src: #sound20; volume: 0.08; autoplay: true; loop: true" position="2.282 2.47449 1.94381"></a-entity>
-			<a-entity sound="src: #sound21; volume: 0.08; autoplay: true; loop: true" position="0.96399 2.32678 1.97416"></a-entity>
-			<a-entity sound="src: #sound22; volume: 0.08; autoplay: true; loop: true" position="2.282 2.19817 1.8399"></a-entity>
-			<a-entity sound="src: #sound23; volume: 0.08; autoplay: true; loop: true" position="0.96399 2.11135 1.76843"></a-entity>
-			<a-entity sound="src: #sound24; volume: 0.08; autoplay: true; loop: true" position="2.282 1.98869 1.7333"></a-entity>
-			<a-entity sound="src: #sound25; volume: 0.08; autoplay: true; loop: true" position="0.96399 1.90417 1.63467"></a-entity>
-			<a-entity sound="src: #sound26; volume: 0.08; autoplay: true; loop: true" position="2.282 1.73832 1.58688"></a-entity>
-			<a-entity sound="src: #sound27; volume: 0.08; autoplay: true; loop: true" position="0.96399 1.69846 1.43282"></a-entity>
-			<a-entity sound="src: #sound28; volume: 0.08; autoplay: true; loop: true" position="2.282 1.5142 1.4366"></a-entity>
-			<a-entity sound="src: #sound29; volume: 0.08; autoplay: true; loop: true" position="0.96399 1.40151 1.29977"></a-entity>
-			<a-entity sound="src: #sound30; volume: 0.08; autoplay: true; loop: true" position="2.282 1.29511 1.17422"></a-entity>
-			<a-entity sound="src: #sound31; volume: 0.08; autoplay: true; loop: true" position="0.96399 1.2236 1.13017"></a-entity>
-			<a-entity sound="src: #sound32; volume: 0.08; autoplay: true; loop: true" position="2.282 0.984 1.28781"></a-entity>
-			<a-entity sound="src: #sound33; volume: 0.08; autoplay: true; loop: true" position="0.96399 0.94236 1.00593"></a-entity>
-			<a-entity sound="src: #sound34; volume: 0.08; autoplay: true; loop: true" position="2.282 0.77149 0.9735"></a-entity>
-			<a-entity sound="src: #sound35; volume: 0.08; autoplay: true; loop: true" position="0.96399 0.68719 0.82358"></a-entity>
+			<a-entity class="sounds" sound="src: #sound0; volume: 0.08; loop: true" position="2.396 4.051 4.228"></a-entity>
+			<a-entity class="sounds" sound="src: #sound1; volume: 0.08; loop: true" position="0.8854 4.051 4.09757"></a-entity>
+			<a-entity class="sounds" sound="src: #sound2; volume: 0.08; loop: true" position="2.282 4.096 3.943"></a-entity>
+			<a-entity class="sounds" sound="src: #sound3; volume: 0.08; loop: true" position="1.08101 4.096 3.77898"></a-entity>
+			<a-entity class="sounds" sound="src: #sound4; volume: 0.08; loop: true" position="2.31458 3.88854 3.68708"></a-entity>
+			<a-entity class="sounds" sound="src: #sound5; volume: 0.08; loop: true" position="1.21794 4.01272 3.47562"></a-entity>
+			<a-entity class="sounds" sound="src: #sound6; volume: 0.08; loop: true" position="2.282 3.65232 3.49393"></a-entity>
+			<a-entity class="sounds" sound="src: #sound7; volume: 0.08; loop: true" position="1.21794 3.75081 3.36149"></a-entity>
+			<a-entity class="sounds" sound="src: #sound8; volume: 0.08; loop: true" position="2.282 3.48176 3.33594"></a-entity>
+			<a-entity class="sounds" sound="src: #sound9; volume: 0.08; loop: true" position="1.12023 3.52458 3.10233"></a-entity>
+			<a-entity class="sounds" sound="src: #sound10; volume: 0.08; loop: true" position="2.282 3.42621 2.99471"></a-entity>
+			<a-entity class="sounds" sound="src: #sound11; volume: 0.08; loop: true" position="0.96399 3.46104 2.78939"></a-entity>
+			<a-entity class="sounds" sound="src: #sound12; volume: 0.08; loop: true" position="2.282 3.22526 2.71302"></a-entity>
+			<a-entity class="sounds" sound="src: #sound13; volume: 0.08; loop: true" position="0.96399 3.2443 2.64086"></a-entity>
+			<a-entity class="sounds" sound="src: #sound14; volume: 0.08; loop: true" position="2.282 3.13036 2.41451"></a-entity>
+			<a-entity class="sounds" sound="src: #sound15; volume: 0.08; loop: true" position="0.96399 3.07644 2.42531"></a-entity>
+			<a-entity class="sounds" sound="src: #sound16; volume: 0.08; loop: true" position="2.282 2.82988 2.37873"></a-entity>
+			<a-entity class="sounds" sound="src: #sound17; volume: 0.08; loop: true" position="0.96399 2.80621 2.30457"></a-entity>
+			<a-entity class="sounds" sound="src: #sound18; volume: 0.08; loop: true" position="2.282 2.66532 2.17464"></a-entity>
+			<a-entity class="sounds" sound="src: #sound19; volume: 0.08; loop: true" position="0.96399 2.5741 2.12945"></a-entity>
+			<a-entity class="sounds" sound="src: #sound20; volume: 0.08; loop: true" position="2.282 2.47449 1.94381"></a-entity>
+			<a-entity class="sounds" sound="src: #sound21; volume: 0.08; loop: true" position="0.96399 2.32678 1.97416"></a-entity>
+			<a-entity class="sounds" sound="src: #sound22; volume: 0.08; loop: true" position="2.282 2.19817 1.8399"></a-entity>
+			<a-entity class="sounds" sound="src: #sound23; volume: 0.08; loop: true" position="0.96399 2.11135 1.76843"></a-entity>
+			<a-entity class="sounds" sound="src: #sound24; volume: 0.08; loop: true" position="2.282 1.98869 1.7333"></a-entity>
+			<a-entity class="sounds" sound="src: #sound25; volume: 0.08; loop: true" position="0.96399 1.90417 1.63467"></a-entity>
+			<a-entity class="sounds" sound="src: #sound26; volume: 0.08; loop: true" position="2.282 1.73832 1.58688"></a-entity>
+			<a-entity class="sounds" sound="src: #sound27; volume: 0.08; loop: true" position="0.96399 1.69846 1.43282"></a-entity>
+			<a-entity class="sounds" sound="src: #sound28; volume: 0.08; loop: true" position="2.282 1.5142 1.4366"></a-entity>
+			<a-entity class="sounds" sound="src: #sound29; volume: 0.08; loop: true" position="0.96399 1.40151 1.29977"></a-entity>
+			<a-entity class="sounds" sound="src: #sound30; volume: 0.08; loop: true" position="2.282 1.29511 1.17422"></a-entity>
+			<a-entity class="sounds" sound="src: #sound31; volume: 0.08; loop: true" position="0.96399 1.2236 1.13017"></a-entity>
+			<a-entity class="sounds" sound="src: #sound32; volume: 0.08; loop: true" position="2.282 0.984 1.28781"></a-entity>
+			<a-entity class="sounds" sound="src: #sound33; volume: 0.08; loop: true" position="0.96399 0.94236 1.00593"></a-entity>
+			<a-entity class="sounds" sound="src: #sound34; volume: 0.08; loop: true" position="2.282 0.77149 0.9735"></a-entity>
+			<a-entity class="sounds" sound="src: #sound35; volume: 0.08; loop: true" position="0.96399 0.68719 0.82358"></a-entity>
 
 		</a-scene>
 	</body>
